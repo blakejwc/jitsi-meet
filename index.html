@@ -166,6 +166,22 @@
                     <img id="recordingSpinner" class="recordingSpinner" src="images/spin.svg"></img>
                 </span>
             </div>
+
+            <div id="driveControlsContainer" class="hidden">
+                <div class="cameraControlsContainer">
+                    <a class="cameraTiltButton" id="camera_tilt_up" data-container="body" data-toggle="popover" shortcut="joystickPopover" data-placement="top" data-i18n="[content]joystick.tiltCameraUp" content="Tilt camera up">
+                        <i id="cameraTiltUpButton" class="icon-up-arrow"></i>
+                    </a>
+                    <div class="cameraIcon">
+                        <i class="icon-camera"></i>
+                    </div>
+                    <a class="cameraTiltButton" id="camera_tilt_down" data-container="body" data-toggle="popover" shortcut="joystickPopover" data-placement="top" data-i18n="[content]joystick.tiltCameraDown" content="Tilt camera down">
+                        <i id="cameraTiltDownButton" class="icon-down-arrow"></i>
+                    </a>
+                </div>
+                <canvas id="joystickCanvas" class="joystickcanvas"></canvas>
+            </div>
+
             <div class="filmstrip">
                 <div class="filmstrip__videos" id="remoteVideos">
                     <span id="localVideoContainer" class="videocontainer videocontainer_small">

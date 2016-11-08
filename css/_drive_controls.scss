@@ -1,0 +1,77 @@
+#driveControlsContainer {
+    display:block;
+    position:absolute;
+    text-align:right;
+    height:120px;
+    padding: 18px;
+    bottom: 0;
+    left: 0;
+    right: 20px;
+    width:auto;
+    border:1px solid transparent;
+    z-index: 5;
+    transition: bottom 2s;
+    overflow: visible !important;
+}
+
+#driveControlsContainer.hidden {
+    bottom: -196px;
+}
+
+.joystickcanvas {
+    display: inline-block;
+    height: 120px;
+    width: 120px;
+    background: rgba(30,30,30,1);
+    border: 2px solid rgba(100,100,100,1);
+}
+
+.joystickcanvas:active {
+    cursor: none;
+}
+
+.cameraControlsContainer {
+    display: inline-block;
+    position: relative;
+    bottom: 15px;
+    width: 29px;
+    height: 120px;
+    padding-left: 6px;
+    padding-right: 10px;
+    margin-right: 7px;
+    background: rgba(30,30,30,1);
+    box-shadow: 0px 0px 50px rgba(0,0,0,0.6) inset;
+    border: 2px solid rgba(100,100,100,1);
+}
+
+.cameraTiltButton, .cameraIcon {
+    display: inline-block;
+    position: relative;
+    color: #FFFFFF;
+    top: 0;
+    padding: 2px;
+    margin: 8px 3px 0px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    font-size: 13pt;
+    text-align: center;
+    text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
+    z-index: 1;
+}
+
+a.cameraTiltButton:hover {
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1px;
+    -webkit-border-radius: 1px;
+}
+
+.cameraIcon {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.cameraTiltButton > i, .cameraIcon > i {
+    line-height: 1.2em;
+}

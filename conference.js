@@ -465,6 +465,10 @@ export default {
      * Whether the local participant is the dominant speaker in the conference.
      */
     isDominantSpeaker: false,
+    /*
+     * Whether the local participant is the joystick driver in the conference.
+     */
+    isJoystickDriver: false,
     /**
      * Open new connection and join to the conference.
      * @param {object} options
@@ -1228,6 +1232,11 @@ export default {
             }
             APP.UI.markDominantSpeaker(id);
         });
+        // TODO: Add as own react action/event (requires changes to lib)
+        // room.on(ConferenceEvents.JOYSTICK_DRIVER_CHANGED, (id) => {
+        //     this.isJoystickDriver = this.isLocalId(id)
+        //     APP.UI.markJoystickDriver(id);
+        // });
 
         if (!interfaceConfig.filmStripOnly) {
             room.on(ConferenceEvents.CONNECTION_INTERRUPTED, () => {

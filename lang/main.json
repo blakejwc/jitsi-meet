@@ -109,7 +109,8 @@
     "bottomtoolbar": {
         "chat": "Open / close chat",
         "filmstrip": "Show / hide videos",
-        "contactlist": "View and invite participants"
+        "contactlist": "View and invite participants",
+        "joystick": "Show / hide joystick"
     },
     "chat":{
         "nickname": {
@@ -377,5 +378,10 @@
         "streamIdRequired": "Please fill in the stream id in order to launch the live streaming.",
         "error": "Live streaming failed. Please try again.",
         "busy": "All recorders are currently busy. Please try again later."
+    },
+    "joystick":
+    {
+        "tiltCameraUp": "Hold to tilt camera up",
+        "tiltCameraDown": "Hold to tilt camera down"
     }
 }

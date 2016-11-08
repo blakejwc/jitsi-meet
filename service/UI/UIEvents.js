@@ -56,6 +56,7 @@ export default {
      * @see {TOGGLED_FILM_STRIP}
      */
     TOGGLE_FILM_STRIP: "UI.toggle_film_strip",
+    TOGGLE_JOYSTICK: "UI.toggle_joystick",
     /**
      * Notifies that the film strip was (actually) toggled. The event supplies
      * a {Boolean} (primitive) value indicating the visibility of the film

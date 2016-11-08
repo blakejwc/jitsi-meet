@@ -18,6 +18,8 @@ import GumPermissionsOverlay
 import PageReloadOverlay from './reload_overlay/PageReloadOverlay';
 import VideoLayout from "./videolayout/VideoLayout";
 import FilmStrip from "./videolayout/FilmStrip";
+import Joystick from "./videolayout/Joystick";
+import Ros from "./util/Ros";
 import SettingsMenu from "./side_pannels/settings/SettingsMenu";
 import Profile from "./side_pannels/profile/Profile";
 import Settings from "./../settings/Settings";
@@ -296,6 +298,11 @@ UI.mucJoined = function () {
  * Handler for toggling filmstrip
  */
 UI.handleToggleFilmStrip = () => {
+    // If showing the film strip, first ensure that the joystick is
+    // hidden, because the two share the same space.
+    if (!UI.isFilmStripVisible() && UI.isJoystickVisible()) {
+        UI.toggleJoystick(false);
+    }
     UI.toggleFilmStrip();
 };
 
@@ -348,6 +355,15 @@ function registerListeners() {
     });
 
     UI.addListener(UIEvents.TOGGLE_FILM_STRIP, UI.handleToggleFilmStrip);
+
+    UI.addListener(UIEvents.TOGGLE_JOYSTICK, function() {
+        // If showing the joystick, first ensure that the film strip is
+        // hidden, because the two share the same space.
+        if (!UI.isJoystickVisible() && UI.isFilmStripVisible()) {
+            UI.handleToggleFilmStrip();
+        }
+        UI.toggleJoystick();
+    });
 
     UI.addListener(UIEvents.FOLLOW_ME_ENABLED, function (isEnabled) {
         if (followMeHandler)
@@ -417,9 +433,12 @@ UI.start = function () {
 
     registerListeners();
 
+    Ros.init();
+
     ToolbarToggler.init();
     SideContainerToggler.init(eventEmitter);
     FilmStrip.init(eventEmitter);
+    Joystick.init(eventEmitter);
 
     VideoLayout.init(eventEmitter);
     if (!interfaceConfig.filmStripOnly) {
@@ -689,6 +708,23 @@ UI.toggleFilmStrip = function () {
 UI.isFilmStripVisible = function () {
     return FilmStrip.isFilmStripVisible();
 };
+
+/**
+ * Toggles joystick drive controls.
+ */
+UI.toggleJoystick = function () {
+    var self = Joystick;
+    self.toggleJoystick.apply(self, arguments);
+};
+
+/**
+ * Indicates if the joystick is currently visible or not.
+ * @returns {true} if the joystick is currently visible, false otherwise
+ */
+UI.isJoystickVisible = function () {
+   return Joystick.isJoystickVisible();
+};
+
 
 /**
  * Toggles chat panel.

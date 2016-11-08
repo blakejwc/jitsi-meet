@@ -121,6 +121,10 @@ const buttonHandlers = {
         JitsiMeetJS.analytics.sendEvent('toolbar.filmstrip.toggled');
         emitter.emit(UIEvents.TOGGLE_FILM_STRIP);
     },
+    "toolbar_joystick": function () {
+        JitsiMeetJS.analytics.sendEvent('toolbar.joystick.toggled');
+        emitter.emit(UIEvents.TOGGLE_JOYSTICK);
+    },
     "toolbar_button_raisehand": function () {
         JitsiMeetJS.analytics.sendEvent('toolbar.raiseHand.clicked');
         APP.conference.maybeToggleRaisedHand();
@@ -273,6 +277,18 @@ const defaultToolbarButtons = {
         },
         shortcutDescription: "keyboardShortcuts.toggleFilmstrip"
     },
+    'joystick': {
+        id: 'toolbar_joystick',
+        tooltipKey: 'toolbar.joystick',
+        className: "button icon-joystick",
+        shortcut: "J",
+        shortcutAttr: "joystickPopover",
+        shortcutFunc: function() {
+            JitsiMeetJS.analytics.sendEvent("shortcut.joystick.toggled");
+            APP.UI.toggleJoystick();
+        },
+        shortcutDescription: "keyboardShortcuts.toggleJoystick"
+    },
     'raisehand': {
         id: "toolbar_button_raisehand",
         tooltipKey: 'toolbar.raiseHand',
@@ -297,7 +313,7 @@ const defaultToolbarButtons = {
         id: 'toolbar_button_sharedvideo',
         tooltipKey: 'toolbar.sharedvideo',
         className: 'button icon-shared-video',
-        html: `<ul id="sharedVideoMutedPopup" 
+        html: `<ul id="sharedVideoMutedPopup"
                    class="loginmenu extendedToolbarPopup">
                    <li data-i18n="[html]toolbar.sharedVideoMutedPopup"></li>
                </ul>
